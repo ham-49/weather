@@ -53,7 +53,7 @@ h6{
 .wearherBoxWrap::before{
   content: '';
   display: block;
-  background: url(components/images/bg.svg) no-repeat;
+  background: url(./components/images/bg.svg) no-repeat;
   background-size: 99%;
   position: absolute;
   top: 0;
@@ -69,7 +69,7 @@ h6{
   width: 100%; height: 300px;
   position: absolute;
   bottom: 0; left: 0;
-  background: url(components/images/bg-day.png) no-repeat;
+  background: url(./components/images/bg-day.png) no-repeat;
   background-size: cover;
 }
 .weatherWrap.day .wearherBoxWrap{
@@ -91,7 +91,7 @@ h6{
   width: 100%; height: 300px;
   position: absolute;
   bottom: 0; left: 0;
-  background: url(components/images/bg-night.png) no-repeat;
+  background: url(./components/images/bg-night.png) no-repeat;
   background-size: cover;
 }
 .weatherWrap.night .wearherBoxWrap{

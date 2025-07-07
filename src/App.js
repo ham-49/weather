@@ -53,16 +53,23 @@ function App() {
   }
   //현재 위치만 가져오는 함수
   let getCurrentLocation = () => {
-    navigator.geolocation.getCurrentPosition((postion) => {
-      let lat = postion.coords.latitude;
-      let lon = postion.coords.longitude;
-      getWeatherByCurrentLocation(lat,lon);
-    })
-  }
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        let lat = position.coords.latitude;
+        let lon = position.coords.longitude;
+        getWeatherByCurrentLocation(lat, lon);
+      },
+      (error) => {
+        console.error("위치 정보를 가져오지 못했습니다:", error);
+        // fallback으로 기본 도시 날씨 로드
+        getWeatherByCity("Seoul");
+      }
+    );
+  };
   //현재 위치 기반 날씨를 가져오는 함수
   let getWeatherByCurrentLocation = async (lat, lon) => {
     setIsLoading(true);
-    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}units=metric`
+    let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`
     let response = await fetch(url);
     let data = await response.json();
     setWeather(data);
@@ -114,8 +121,12 @@ function App() {
     <div className={`weatherWrap ${isDay ? 'day' : 'night'}`}>
       <div className="main-bg"></div>
       <div className="wearherBoxWrap">
-      <BoxTop weather={weather} cities={cities} />
-      <BoxMiddle weather={weather} cities={cities} />
+      {weather && (
+        <>
+          <BoxTop weather={weather} cities={cities} />
+          <BoxMiddle weather={weather} cities={cities} />
+        </>
+      )}
       <BoxBottom allWeather={allWeather}/>
       </div>
     </div>
