@@ -1,0 +1,18 @@
+.infoWrap{
+  width: max-content;
+  background: #ffffff8c;
+  display: flex; align-items: center; justify-content: center; gap: 50px;
+  border-radius: 50px;
+  padding: 10px 60px; margin: 0 auto 20px;
+}
+.infoItem{
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px;
+}
+.infoItem{
+  font-size: 28px;
+}
+@media (max-width: 768px) {
+  .infoWrap{
+    
+  }
+}

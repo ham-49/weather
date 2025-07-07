@@ -1,38 +1,133 @@
-.App {
-  text-align: center;
+/* font */
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+/* common */
+:root{
+  --main-font: #121C5E;
+}
+*{margin: 0; padding: 0; box-sizing: border-box;}
+body{font-family: 'GmarketSansMedium'; color: var(--main-font);}
+h1{
+  font-size: 155px;
+}
+h2{
+  font-size: 28px;
+}
+h3{
+  font-size: 20px;
+}
+h4{
+  font-size: 18px;
+}
+h5{
+  font-size: 16px;
+}
+h6{
+  font-size: 15px;
+}
+.num{font-family: "Rajdhani", sans-serif;}
+
+.main-bg{
+  width: 100%; height: 100vh;
+  position: relative;
+  background: #fff;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.wearherBoxWrap{
+  position: absolute;
+  top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 446px; height: 800px;
+  margin: auto;
+  background: #fff;
+  z-index: 1;
+  border-radius: 65px;
+  overflow: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.wearherBoxWrap::before{
+  content: '';
+  display: block;
+  background: url(components/images/bg.svg) no-repeat;
+  background-size: 99%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 450px; height: 800px;
+}
+/* day */
+.weatherWrap.day .main-bg{
+  background: linear-gradient( #E9F8FF,#94ddfe);
+}
+.weatherWrap.day .main-bg::after{
+  content: '';
+  width: 100%; height: 300px;
+  position: absolute;
+  bottom: 0; left: 0;
+  background: url(components/images/bg-day.png) no-repeat;
+  background-size: cover;
+}
+.weatherWrap.day .wearherBoxWrap{
+  background: #94ddfe;
+}
+.weatherWrap.day .tempWrap .temp{
+  color:#00AEFF;
+}
+
+/* night */
+.weatherWrap.night{
+  color: #fff;
+}
+.weatherWrap.night .main-bg{
+  background: linear-gradient( #252829,#415055);
+}
+.weatherWrap.night .main-bg::after{
+  content: '';
+  width: 100%; height: 300px;
+  position: absolute;
+  bottom: 0; left: 0;
+  background: url(components/images/bg-night.png) no-repeat;
+  background-size: cover;
+}
+.weatherWrap.night .wearherBoxWrap{
+  background: #292E30;
+}
+.weatherWrap.night .tempWrap .temp{
+  color: var(--main-font);
+}
+
+@media (max-width: 768px) {
+  .main-bg {
+    display: none;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .wearherBoxWrap{
+    position: absolute;
+    top: 50%; left: 50%; transform: translate(-50%, -50%);
+    width: 100%; height: 100%;
+    margin: auto;
+    background: #fff;
+    z-index: 1;
+    border-radius: 0;
+    overflow: hidden;
   }
-  to {
-    transform: rotate(360deg);
+  .wearherBoxWrap::before{
+    display: none;
+  }
+  h1{
+    font-size: 100px;
+  }
+  h2{
+    font-size: 23px;
+  }
+    h3{
+    font-size: 18px;
+  }
+    h6{
+    font-size: 12px;
   }
 }

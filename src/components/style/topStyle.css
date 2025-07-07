@@ -1,0 +1,43 @@
+.boxTop{
+  text-align: center;
+  margin: 90px 0 30px;
+}
+.boxTop h2 i{
+  font-size: 24px;
+  margin-right: 5px;
+}
+.topTemp{
+  width: max-content;
+  position: relative;
+  margin: auto; padding: 0 10px;
+}
+.boxTop .topImg{
+  width: 150px; height: 150px;
+  position: absolute;
+  bottom: 0;right: -30px;
+  display: flex; align-items: center; justify-content: center;
+}
+.boxTop .topImg img{
+  width: 70%;
+}
+.maxMinTemp{
+  display: flex; align-items: center; gap: 10px;
+  position: absolute;
+  bottom: 10px;
+}
+
+@media (max-width: 768px) {
+  .boxTop{
+    text-align: center;
+    margin: 50px 0 30px;
+  }
+  .boxTop .topImg{
+  width: 100px; height: 100px;
+  bottom: 0;right: -20px;
+  display: flex; align-items: center; justify-content: center;
+  }
+  .maxMinTemp{
+    margin-top: 20px;
+    bottom: -10px;
+  }
+}
