@@ -1,70 +1,83 @@
-# Getting Started with Create React App
+<div align= "center">
+  <img src="https://capsule-render.vercel.app/api?type=rounded&color=6190ff&height=120&text=날씨%20웹%20프로젝트&animation=fadeIn&fontColor=ffffff&fontSize=50" />
+</div>
+    
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
 
-## Available Scripts
+## 📌 프로젝트 개요
 
-In the project directory, you can run:
+본 프로젝트는 **React**와 **OpenWeatherMap API**를 활용하여 날씨 데이터를 가져와 시각화한 웹 애플리케이션입니다.  
+불러온 데이터를 구조적으로 가공하여 **한 페이지 내에서 모든 날씨 정보를 직관적으로 확인**할 수 있도록 구성했습니다.
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+<br>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 💡 프로젝트 소개
+#### 소요기간 : 1일
 
-### `npm test`
+<br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🗂️ 개발환경
 
-### `npm run build`
+- **React**
+- **CSS**
+- **Library (Swiper)**
+- **API (Open Weather API)**
+- **Design (Figma)**
+ 
+<br>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## 💡 기획 및 UI/UX 고려 사항
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 실시간 위치 기반 날씨 정보 표시  
+- 주요 도시의 날씨 요약 정보 제공  
+- 일몰 시간 기준으로 **낮/밤 테마 자동 전환**  
+- 날씨 상태에 따라 **동적인 아이콘 및 스타일 적용**  
+- 사용자 친화적인 **UI/UX 중심 설계**
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+| 항목 | 설명 |
+|------|------|
+| UI 톤앤매너 | 전체적으로 색감과 레이아웃을 통일성 있게 구성 |
+| 테마 전환 | API에서 제공하는 일몰 시간(sunset)을 기준으로 **낮/밤 테마 자동 전환** |
+| 정보 구조화 | 한 화면 내에서 주요 정보를 구역별로 시각적으로 구분해 배치 (Top / Middle / Bottom) |
+  
+<br>
 
-### `npm run eject`
+## 📌 페이지 구성 및 및 기능 (메인페이지)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 🛠 1. 현재 위치 데이터 기반 날씨 정보 반영
+- **Geolocation API**를 활용하여 사용자 위치(위도, 경도)를 가져온 후 해당 지역의 날씨 데이터를 불러옴.
+- 위치 허용이 거부된 경우, 기본 도시(서울)의 날씨를 불러와 fallback 처리.
+  
+### 🛠 2. 주요 도시 날씨 정보 반영
+- **주요 도시 정보 지정 후 반영**
+- 주요 도시는 배열로 정의 (`Seoul`, `Busan`, `Jeju City`, `Yeosu`, `Gapyeong` 등).
+- 각 도시별로 OpenWeatherMap API를 호출하여 데이터를 수집하고, 리스트 형태로 화면 하단에 표시.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### 🛠 3. 다양한 컴포넌트 생성 및 사용
+- **BoxTop**, **BoxMiddle**, **BoxBottom** 세 개의 컴포넌트로 구성.
+- 각 컴포넌트는 다음과 같은 역할을 수행 하도록 구현.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+| 컴포넌트 | 설명 |
+|----------|------|
+| BoxTop | 상단 - 현재 날씨 및 도시 선택 |
+| BoxMiddle | 중단 - 날씨 상태 아이콘, 상세 기온, 설명 등 |
+| BoxBottom | 하단 - 주요 도시별 날씨 리스트 제공 (Swiper로 구성 가능) |
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## 📬 프로젝트 총평
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+이번 **날씨 웹 프로젝트**는 **React를 활용한 첫 실습 프로젝트**로,  
+외부 API(OpenWeatherMap)를 연동하여 데이터를 가져오고, 이를 **컴포넌트 기반으로 구조화하여 렌더링하는 전반적인 흐름**을 경험할 수 있었습니다.
 
-### Code Splitting
+또한, `fetch`, `useEffect`, `useState` 등 기본 훅의 사용을 통해 데이터 흐름을 이해하고,  
+**조건부 렌더링** 및 **상태 기반 테마 전환**(일몰 시간 기준)을 구현함으로써 **실시간 UI 반응 처리**를 할 수 있도록 설계하였습니다.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+마지막으로, **반응형 웹 설계**를 통해 PC와 모바일 등 다양한 디바이스에 유연하게 대응할 수 있도록 구현함으로써,  
+사용성과 접근성을 함께 고려한 프로젝트였습니다.
 
-### Analyzing the Bundle Size
+<br>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**❗ 본 프로젝트는 비상업적 학습, 포트폴리오 용도로 제작되었습니다.**
